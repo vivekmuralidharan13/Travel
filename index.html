@@ -3,20 +3,24 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Travel Info</title>
+    <title>Travel Explorer</title>
     <link rel="stylesheet" href="style.css">
+    <script defer src="script.js"></script>
 </head>
 <body>
 
-    <!-- Header -->
-    <header>
-        <img src="images/banner.jpg" alt="Travel Banner" class="banner">
-        <h1>Explore the World</h1>
+    <!-- Header Section -->
+    <header class="hero">
+        <div class="overlay">
+            <h1>Explore the World</h1>
+            <p>Discover amazing places and plan your next adventure</p>
+        </div>
     </header>
 
     <!-- Navigation Bar -->
     <nav>
         <ul>
+            <li><a href="index.html">Home</a></li>
             <li class="dropdown">
                 <a href="#">Countries ▼</a>
                 <ul class="dropdown-menu">
@@ -24,15 +28,40 @@
                     <li><a href="#" onclick="loadData('Finland')">Finland</a></li>
                 </ul>
             </li>
+            <li><a href="login.html">Login</a></li>
+            <li><a href="#contact">Contact</a></li>
         </ul>
     </nav>
 
-    <!-- Content Area -->
-    <div id="content">
-        <h2>Welcome to the Travel Guide</h2>
-        <p>Select a country from the menu to explore travel details.</p>
+    <!-- Image Carousel -->
+    <div class="carousel">
+        <img src="images/carousel1.jpg" class="carousel-img">
+        <img src="images/carousel2.jpg" class="carousel-img">
+        <img src="images/carousel3.jpg" class="carousel-img">
     </div>
 
-    <script src="script.js"></script>
+    <!-- Content Section -->
+    <section id="content">
+        <h2>Welcome to Travel Explorer</h2>
+        <p>Select a country from the menu to explore travel details.</p>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact">
+        <h2>Contact Us</h2>
+        <p>Email: contact@travelexplorer.com</p>
+        <p>Follow us on social media:</p>
+        <div class="social-icons">
+            <a href="#"><img src="images/facebook.png" alt="Facebook"></a>
+            <a href="#"><img src="images/twitter.png" alt="Twitter"></a>
+            <a href="#"><img src="images/instagram.png" alt="Instagram"></a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2025 Travel Explorer. All rights reserved.</p>
+    </footer>
+
 </body>
 </html>
