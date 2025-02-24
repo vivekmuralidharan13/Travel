@@ -10,6 +10,17 @@ function loadData(country) {
                 <p><strong>Best Time to Visit:</strong> ${data.best_time_to_visit}</p>
                 <p><strong>Top Attractions:</strong> ${data.attractions.join(", ")}</p>
             `;
-        })
-        .catch(error => console.error("Error loading data:", error));
+        });
 }
+
+// Image Carousel
+let images = document.querySelectorAll(".carousel-img");
+let index = 0;
+
+function showNextImage() {
+    images.forEach(img => img.style.display = "none");
+    images[index].style.display = "block";
+    index = (index + 1) % images.length;
+}
+
+setInterval(showNextImage, 3000);
