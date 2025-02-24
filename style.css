@@ -12,45 +12,73 @@ h1, h2 {
     color: #333;
 }
 
-/* Sidebar for Country List */
-.sidebar {
-    position: fixed;
-    left: 0;
-    top: 80px;
-    width: 250px;
-    height: 100%;
-    background-color: #222;
+/* Header Section */
+.hero {
+    position: relative;
+    background-image: url('images/travel-hero.jpg');
+    background-size: cover;
+    height: 400px;
     color: white;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.hero .overlay {
+    background: rgba(0, 0, 0, 0.5);
     padding: 20px;
 }
 
-.sidebar h2 {
-    margin-top: 0;
+.hero h1 {
+    font-size: 3rem;
+    margin: 0;
 }
 
-.sidebar ul {
+.hero p {
+    font-size: 1.5rem;
+}
+
+/* Navigation Bar */
+nav {
+    background-color: #333;
+}
+
+nav ul {
+    display: flex;
+    justify-content: center;
     list-style: none;
-    padding: 0;
+    margin: 0;
+    padding: 10px;
 }
 
-.sidebar ul li a {
+nav ul li {
+    margin-right: 20px;
+}
+
+nav ul li a {
     color: white;
     text-decoration: none;
-    display: block;
-    padding: 10px 0;
+    font-size: 1.1rem;
+    padding: 10px 15px;
 }
 
-.sidebar ul li a:hover {
-    background-color: #444;
+nav ul li a:hover {
+    background-color: #555;
 }
 
 /* Main Content */
-.main-content {
-    margin-left: 270px;
-    padding: 20px;
+#content {
+    padding: 50px 20px;
+    text-align: center;
 }
 
-/* Footer */
+#content h2 {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+}
+
+/* Footer Section */
 footer {
     background: #222;
     color: white;
