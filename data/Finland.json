@@ -2,5 +2,6 @@
     "name": "Finland",
     "capital": "Helsinki",
     "currency": "Euro (EUR)",
-    "best_time_to_visit": "June to August for summer, December to March for Northern Lights"
+    "best_time_to_visit": "June to August for summer, December to March for Northern Lights",
+    "attractions": ["Northern Lights", "Helsinki Cathedral", "Lapland"]
 }
