@@ -1,7 +1,16 @@
 {
-    "name": "Finland",
-    "capital": "Helsinki",
-    "currency": "Euro (EUR)",
-    "best_time_to_visit": "June to August for summer, December to March for Northern Lights",
-    "attractions": ["Northern Lights", "Helsinki Cathedral", "Lapland"]
+    "Countries": "Finland",
+    "Visa Requirements": "Schengen Visa required for non-EU citizens",
+    "Socket Type": "F",
+    "Card/Cash": "Cards widely accepted, cashless transactions common",
+    "Public Transport": "Efficient buses, trams, and metro in Helsinki",
+    "Uber/Wolt/Yandex Taxi": "Taxis and Uber available",
+    "National Carrier": "Finnair",
+    "Main Airports": "Helsinki-Vantaa",
+    "Budget per day": "$80 - $200 per person",
+    "Weather": "Cold winters, mild summers",
+    "Best Time to Visit": "June-August (Summer), December-February (Winter for Northern Lights)",
+    "Emergency Number": "112",
+    "Top places to Visit": "Helsinki, Rovaniemi (Santa Claus Village), Turku, Lapland",
+    "Currency & Exchange rate": "Euro, 1 EUR = 1.08 USD"
 }

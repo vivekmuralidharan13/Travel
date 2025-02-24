@@ -1,7 +1,16 @@
 {
-    "name": "India",
-    "capital": "New Delhi",
-    "currency": "Indian Rupee (INR)",
-    "best_time_to_visit": "October to March",
-    "attractions": ["Taj Mahal", "Jaipur", "Kerala Backwaters"]
+    "Countries": "India",
+    "Visa Requirements": "eVisa available for many countries",
+    "Socket Type": "C, D, M",
+    "Card/Cash": "Cards accepted in cities, cash preferred in rural areas",
+    "Public Transport": "Extensive train network, buses, and metro in major cities",
+    "Uber/Wolt/Yandex Taxi": "Uber and Ola available in major cities",
+    "National Carrier": "Air India",
+    "Main Airports": "Indira Gandhi International (Delhi), Chhatrapati Shivaji Maharaj (Mumbai)",
+    "Budget per day": "$30 - $80 per person",
+    "Weather": "Hot summers, monsoon rains, mild winters",
+    "Best Time to Visit": "October-March",
+    "Emergency Number": "112 (Police), 102 (Ambulance)",
+    "Top places to Visit": "Delhi, Mumbai, Jaipur, Agra (Taj Mahal), Goa",
+    "Currency & Exchange rate": "Indian Rupee, 1 INR = 0.012 USD"
 }
