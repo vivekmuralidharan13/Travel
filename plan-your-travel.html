@@ -23,9 +23,11 @@
         <!-- Sidebar -->
         <aside>
             <h3>Countries</h3>
-            <ul id="country-list">
-                <!-- Countries will be dynamically added here -->
-            </ul>
+            <!-- Dropdown menu to select country -->
+            <select id="country-dropdown" onchange="loadCountryDataFromDropdown()">
+                <option value="">Select a Country</option>
+                <!-- Options will be added dynamically here -->
+            </select>
         </aside>
 
         <!-- Main Content -->
