@@ -8,10 +8,6 @@ body {
     color: #333;
 }
 
-h1, h2 {
-    color: #333;
-}
-
 /* Navigation Bar */
 nav {
     background-color: #333;
@@ -43,130 +39,54 @@ nav ul li a:hover {
 /* Banner Section */
 .hero {
     position: relative;
-    background-image: url('images/travel-hero.jpg');  /* Add your banner image here */
+    background-image: url('images/travel-hero.jpg');
     background-size: cover;
     background-position: center;
     height: 400px;
     color: white;
-    text-align: center;
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
 .hero .overlay {
-    background: rgba(0, 0, 0, 0.5);  /* Dark overlay to enhance readability */
+    background: rgba(0, 0, 0, 0.5);
     padding: 20px;
 }
 
-.hero h1 {
-    font-size: 3rem;
-    margin: 0;
-}
-
-.hero p {
-    font-size: 1.5rem;
-}
-
-/* Image Carousel Styling */
-#carousel {
-    margin: 50px 0;
-}
-
-.carousel-container {
-    width: 100%;
-    overflow: hidden;
-}
-
-.carousel-images {
+/* Sidebar Layout */
+.container {
     display: flex;
-    justify-content: center;
-    gap: 10px;
-    animation: slide 10s infinite;
 }
 
-.carousel-slide {
-    width: 100%;
-    max-width: 600px;
-    border-radius: 10px;
-    transition: 0.5s ease;
-}
-
-@keyframes slide {
-    0% { transform: translateX(0); }
-    33% { transform: translateX(-100%); }
-    66% { transform: translateX(-200%); }
-    100% { transform: translateX(0); }
-}
-
-/* Main Content */
-#content {
-    padding: 50px 20px;
-    text-align: center;
-}
-
-#content h2 {
-    font-size: 2.5rem;
-    margin-bottom: 20px;
-}
-
-/* Footer Section */
-footer {
-    background: #222;
-    color: white;
-    padding: 10px;
-    position: relative;
-    bottom: 0;
-    width: 100%;
-}
-
-
-/* Sidebar for Country List */
-.sidebar {
-    position: fixed;
-    left: 0;
-    top: 80px;
-    width: 250px;
-    height: 100%;
-    background-color: #222;
+aside {
+    width: 25%;
+    background: #333;
     color: white;
     padding: 20px;
-    border-right: 2px solid #333;
+    text-align: left;
 }
 
-.sidebar h2 {
-    margin-top: 0;
-}
-
-.sidebar ul {
+aside ul {
     list-style: none;
     padding: 0;
 }
 
-.sidebar ul li a {
-    color: white;
-    text-decoration: none;
-    display: block;
-    padding: 10px 0;
+aside ul li {
+    padding: 10px;
+    cursor: pointer;
 }
 
-.sidebar ul li a:hover {
-    background-color: #444;
+aside ul li:hover {
+    background: #555;
 }
 
-/* Main Content */
-.main-content {
-    margin-left: 270px;
+.content {
+    width: 75%;
     padding: 20px;
-    color: #333;
 }
 
-.main-content h2 {
-    font-size: 2rem;
-    margin-bottom: 20px;
-}
-
-/* Footer Section */
+/* Footer */
 footer {
     background: #222;
     color: white;
