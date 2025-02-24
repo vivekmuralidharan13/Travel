@@ -8,6 +8,10 @@ body {
     color: #333;
 }
 
+h1, h2 {
+    color: #333;
+}
+
 /* Hero Section */
 .hero {
     position: relative;
@@ -27,11 +31,7 @@ body {
     border-radius: 10px;
 }
 
-.hero h1 {
-    font-size: 3em;
-}
-
-/* Navigation Menu */
+/* Navigation Bar */
 nav {
     background-color: #222;
     padding: 10px 0;
@@ -60,38 +60,42 @@ nav ul li:hover {
     background-color: #444;
 }
 
-/* Dropdown */
-.dropdown-menu {
-    display: none;
-    position: absolute;
+/* Sidebar for Country List */
+.sidebar {
+    position: fixed;
+    left: 0;
+    top: 80px;
+    width: 250px;
+    height: 100%;
     background-color: #222;
+    color: white;
+    padding: 20px;
+}
+
+.sidebar h2 {
+    margin-top: 0;
+}
+
+.sidebar ul {
     list-style: none;
     padding: 0;
-    margin: 0;
-    top: 100%;
-    left: 0;
-    width: 150px;
 }
 
-.dropdown-menu li {
+.sidebar ul li a {
+    color: white;
+    text-decoration: none;
     display: block;
+    padding: 10px 0;
 }
 
-.dropdown:hover .dropdown-menu {
-    display: block;
+.sidebar ul li a:hover {
+    background-color: #444;
 }
 
-/* Image Carousel */
-.carousel {
-    width: 80%;
-    margin: auto;
-    overflow: hidden;
-    position: relative;
-}
-
-.carousel-img {
-    width: 100%;
-    display: none;
+/* Main Content */
+.main-content {
+    margin-left: 270px;
+    padding: 20px;
 }
 
 /* Footer */
