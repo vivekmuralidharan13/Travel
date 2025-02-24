@@ -1,8 +1,9 @@
-function loadData(country) {
+// Function to Load Country Data on Click
+function loadCountry(country) {
     fetch(`data/${country}.json`)
         .then(response => response.json())
         .then(data => {
-            document.getElementById("content").innerHTML = `
+            document.getElementById("country-info").innerHTML = `
                 <h2>${data.name}</h2>
                 <img src="images/${country.toLowerCase()}.jpg" alt="${data.name}">
                 <p><strong>Capital:</strong> ${data.capital}</p>
@@ -12,15 +13,3 @@ function loadData(country) {
             `;
         });
 }
-
-// Image Carousel
-let images = document.querySelectorAll(".carousel-img");
-let index = 0;
-
-function showNextImage() {
-    images.forEach(img => img.style.display = "none");
-    images[index].style.display = "block";
-    index = (index + 1) % images.length;
-}
-
-setInterval(showNextImage, 3000);
