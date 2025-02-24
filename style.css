@@ -40,11 +40,12 @@ nav ul li a:hover {
     background-color: #555;
 }
 
-/* Hero Section */
+/* Banner Section */
 .hero {
     position: relative;
-    background-image: url('images/travel-hero.jpg');
+    background-image: url('images/travel-hero.jpg');  /* Add your banner image here */
     background-size: cover;
+    background-position: center;
     height: 400px;
     color: white;
     text-align: center;
@@ -54,7 +55,7 @@ nav ul li a:hover {
 }
 
 .hero .overlay {
-    background: rgba(0, 0, 0, 0.5);
+    background: rgba(0, 0, 0, 0.5);  /* Dark overlay to enhance readability */
     padding: 20px;
 }
 
@@ -118,6 +119,7 @@ footer {
     bottom: 0;
     width: 100%;
 }
+
 
 /* Sidebar for Country List */
 .sidebar {
