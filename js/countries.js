@@ -6,16 +6,28 @@ function fetchCountries() {
     fetch("data/countries.json")
         .then(response => response.json())
         .then(data => {
-            let countryList = document.getElementById("country-list");
-            countryList.innerHTML = ""; // Clear list
+            let countryDropdown = document.getElementById("country-dropdown");
 
+            // Clear the dropdown and add a default option
+            countryDropdown.innerHTML = "<option value=''>Select a Country</option>";
+
+            // Add country options to the dropdown
             data.forEach(country => {
-                let li = document.createElement("li");
-                li.textContent = country.name;
-                li.addEventListener("click", () => loadCountryData(country.filename));
-                countryList.appendChild(li);
+                let option = document.createElement("option");
+                option.value = country.filename;
+                option.textContent = country.name;
+                countryDropdown.appendChild(option);
             });
         });
+}
+
+function loadCountryDataFromDropdown() {
+    let dropdown = document.getElementById("country-dropdown");
+    let selectedCountry = dropdown.value;
+
+    if (selectedCountry) {
+        loadCountryData(selectedCountry);
+    }
 }
 
 function loadCountryData(filename) {
