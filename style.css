@@ -1,39 +1,112 @@
-/* Sidebar for Country List */
-.sidebar {
-    position: fixed;
-    left: 0;
-    top: 80px;
-    width: 250px;
-    height: 100%;
-    background-color: #222;
+/* General Styling */
+body {
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+    background-color: #f8f9fa;
+    color: #333;
+}
+
+h1, h2 {
+    color: #333;
+}
+
+/* Navigation Bar */
+nav {
+    background-color: #333;
+}
+
+nav ul {
+    display: flex;
+    justify-content: center;
+    list-style: none;
+    margin: 0;
+    padding: 10px;
+}
+
+nav ul li {
+    margin-right: 20px;
+}
+
+nav ul li a {
     color: white;
+    text-decoration: none;
+    font-size: 1.1rem;
+    padding: 10px 15px;
+}
+
+nav ul li a:hover {
+    background-color: #555;
+}
+
+/* Hero Section */
+.hero {
+    position: relative;
+    background-image: url('images/travel-hero.jpg');
+    background-size: cover;
+    height: 400px;
+    color: white;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.hero .overlay {
+    background: rgba(0, 0, 0, 0.5);
     padding: 20px;
 }
 
-.sidebar h2 {
-    margin-top: 0;
+.hero h1 {
+    font-size: 3rem;
+    margin: 0;
 }
 
-.sidebar ul {
-    list-style: none;
-    padding: 0;
+.hero p {
+    font-size: 1.5rem;
 }
 
-.sidebar ul li a {
-    color: white;
-    text-decoration: none;
-    display: block;
-    padding: 10px 0;
+/* Image Carousel Styling */
+#carousel {
+    margin: 50px 0;
 }
 
-.sidebar ul li a:hover {
-    background-color: #444;
+.carousel-container {
+    width: 100%;
+    overflow: hidden;
+}
+
+.carousel-images {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    animation: slide 10s infinite;
+}
+
+.carousel-slide {
+    width: 100%;
+    max-width: 600px;
+    border-radius: 10px;
+    transition: 0.5s ease;
+}
+
+@keyframes slide {
+    0% { transform: translateX(0); }
+    33% { transform: translateX(-100%); }
+    66% { transform: translateX(-200%); }
+    100% { transform: translateX(0); }
 }
 
 /* Main Content */
-.main-content {
-    margin-left: 270px;
-    padding: 20px;
+#content {
+    padding: 50px 20px;
+    text-align: center;
+}
+
+#content h2 {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
 }
 
 /* Footer Section */
