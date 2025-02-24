@@ -7,14 +7,31 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <h1>Travel Information</h1>
-    <label for="country">Select a country:</label>
-    <select id="country">
-        <option value="India">India</option>
-        <option value="Finland">Finland</option>
-    </select>
-    <button onclick="loadData()">Get Info</button>
-    <div id="info"></div>
+
+    <!-- Header -->
+    <header>
+        <img src="images/banner.jpg" alt="Travel Banner" class="banner">
+        <h1>Explore the World</h1>
+    </header>
+
+    <!-- Navigation Bar -->
+    <nav>
+        <ul>
+            <li class="dropdown">
+                <a href="#">Countries ▼</a>
+                <ul class="dropdown-menu">
+                    <li><a href="#" onclick="loadData('India')">India</a></li>
+                    <li><a href="#" onclick="loadData('Finland')">Finland</a></li>
+                </ul>
+            </li>
+        </ul>
+    </nav>
+
+    <!-- Content Area -->
+    <div id="content">
+        <h2>Welcome to the Travel Guide</h2>
+        <p>Select a country from the menu to explore travel details.</p>
+    </div>
 
     <script src="script.js"></script>
 </body>
