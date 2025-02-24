@@ -2,5 +2,6 @@
     "name": "India",
     "capital": "New Delhi",
     "currency": "Indian Rupee (INR)",
-    "best_time_to_visit": "October to March"
+    "best_time_to_visit": "October to March",
+    "attractions": ["Taj Mahal", "Jaipur", "Kerala Backwaters"]
 }
