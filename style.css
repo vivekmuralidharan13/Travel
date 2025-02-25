@@ -1,97 +1,92 @@
-/* General Styling */
+/* Main Styling */
 body {
-    font-family: 'Poppins', sans-serif;
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
     margin: 0;
     padding: 0;
-    text-align: center;
-    background-color: #f8f9fa;
-    color: #333;
 }
 
-/* Navigation Bar */
 nav {
     background-color: #333;
+    color: white;
+    padding: 10px;
+    text-align: center;
 }
 
 nav ul {
-    display: flex;
-    justify-content: center;
     list-style: none;
-    margin: 0;
-    padding: 10px;
+    padding: 0;
 }
 
 nav ul li {
+    display: inline;
     margin-right: 20px;
 }
 
 nav ul li a {
     color: white;
     text-decoration: none;
-    font-size: 1.1rem;
-    padding: 10px 15px;
+    font-size: 16px;
 }
 
-nav ul li a:hover {
-    background-color: #555;
-}
-
-/* Banner Section */
-.hero {
-    position: relative;
-    background-image: url('images/travel-hero.jpg');
-    background-size: cover;
-    background-position: center;
-    height: 400px;
-    color: white;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.hero .overlay {
-    background: rgba(0, 0, 0, 0.5);
-    padding: 20px;
-}
-
-/* Sidebar Layout */
 .container {
     display: flex;
+    justify-content: space-between;
+    padding: 20px;
 }
 
 aside {
-    width: 25%;
-    background: #333;
-    color: white;
-    padding: 20px;
-    text-align: left;
-}
-
-aside ul {
-    list-style: none;
-    padding: 0;
-}
-
-aside ul li {
+    width: 20%;
+    background-color: #e0e0e0;
     padding: 10px;
-    cursor: pointer;
 }
 
-aside ul li:hover {
-    background: #555;
+aside h3 {
+    text-align: center;
+}
+
+select {
+    width: 100%;
+    padding: 10px;
+    margin-top: 20px;
 }
 
 .content {
     width: 75%;
     padding: 20px;
+    background-color: white;
 }
 
-/* Footer */
+.country-info-section {
+    margin-top: 20px;
+}
+
+.info-section {
+    margin-bottom: 20px;
+}
+
+.info-section h3 {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 5px;
+    text-align: left;
+    color: #333;
+}
+
+.info-section hr {
+    border: 1px solid #ccc;
+    margin-bottom: 10px;
+}
+
+.info-section p {
+    font-size: 16px;
+    line-height: 1.6;
+    color: #555;
+}
+
 footer {
-    background: #222;
+    background-color: #333;
     color: white;
     padding: 10px;
-    position: relative;
-    bottom: 0;
-    width: 100%;
+    text-align: center;
 }
