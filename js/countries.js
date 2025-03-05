@@ -1,45 +1,84 @@
-function loadCountryData(filename) {
-    fetch(`data/${filename}`)
+document.addEventListener("DOMContentLoaded", function() {
+    // Fetch countries list from countries.json
+    fetch('data/countries.json')
+    .then(response => response.json())
+    .then(countries => {
+        const countryDropdown = document.getElementById('country-dropdown');
+        
+        // Populate country dropdown
+        countries.forEach(country => {
+            const option = document.createElement('option');
+            option.value = country.filename;
+            option.textContent = country.name;
+            countryDropdown.appendChild(option);
+        });
+    });
+
+    // Handle country selection from the dropdown
+    document.getElementById('country-dropdown').addEventListener('change', function(event) {
+        const selectedCountry = event.target.value;
+        if (selectedCountry) {
+            loadCountryData(selectedCountry);
+        }
+    });
+
+    // Load country data dynamically based on selected country
+    function loadCountryData(countryFile) {
+        fetch(`data/${countryFile}`)
         .then(response => response.json())
         .then(data => {
-            document.getElementById("country-title").textContent = data.Countries; // Update title
-            
-            // Function to process nested objects if they exist
-            function processNestedData(fieldId, fieldData) {
-                let fieldElement = document.getElementById(fieldId);
-                if (!fieldElement) return;
-                
-                if (typeof fieldData === "object") {
-                    // Handle nested objects by formatting their contents
-                    let formattedText = "";
-                    for (let key in fieldData) {
-                        if (typeof fieldData[key] === "object") {
-                            formattedText += `${key}: ${JSON.stringify(fieldData[key], null, 2)}\n`;
-                        } else {
-                            formattedText += `${key}: ${fieldData[key]}\n`;
-                        }
-                    }
-                    fieldElement.textContent = formattedText;
-                } else {
-                    // If it's a string or simple value, assign directly
-                    fieldElement.textContent = fieldData;
-                }
-            }
+            // Update country name
+            document.getElementById('country-name').textContent = data.Countries;
 
-            // Updating each field dynamically
-            processNestedData("visa-requirements", data["Visa Requirements"]);
-            processNestedData("socket-type", data["Socket Type"]);
-            processNestedData("card-cash", data["Card/Cash"]);
-            processNestedData("public-transport", data["Public Transport"]);
-            processNestedData("uber-taxi", data["Uber/Wolt/Yandex Taxi"]);
-            processNestedData("national-carrier", data["National Carrier"]);
-            processNestedData("main-airports", data["Main Airports"].join(", "));
-            processNestedData("budget-per-day", data["Budget per day"]);
-            processNestedData("weather", data["Weather"]);
-            processNestedData("best-time-to-visit", data["Best Time to Visit"]);
-            processNestedData("emergency-number", data["Emergency Number"]);
-            processNestedData("top-places-to-visit", data["Top places to Visit"].join(", "));
-            processNestedData("currency-exchange-rate", data["Currency & Exchange rate"]);
-        })
-        .catch(err => console.error("Error loading country data:", err));
-}
+            // Update other fields (check if the field exists in data before updating)
+            updateField('visa-requirements', data['Visa Requirements']);
+            updateField('socket-type', data['Socket Type']);
+            updateField('card-cash', data['Card/Cash']);
+            updateField('public-transport', data['Public Transport']);
+            updateField('uber-taxi', data['Uber/Wolt/Yandex Taxi']);
+            updateField('national-carrier', data['National Carrier']);
+            updateField('main-airports', data['Main Airports']);
+            updateField('budget-per-day', data['Budget per day']);
+            updateField('weather', data['Weather']);
+            updateField('best-time-to-visit', data['Best Time to Visit']);
+            updateField('emergency-number', data['Emergency Number']);
+            updateField('top-places-to-visit', data['Top places to Visit']);
+            updateField('currency-exchange-rate', data['Currency & Exchange rate']);
+        });
+    }
+
+    // Update field content (for both text and arrays)
+    function updateField(fieldId, fieldValue) {
+        const field = document.getElementById(fieldId);
+        
+        if (field) {
+            if (typeof fieldValue === 'object' && !Array.isArray(fieldValue)) {
+                // Handle nested objects (e.g., Visa Requirements)
+                field.innerHTML = formatNestedObject(fieldValue);
+            } else if (Array.isArray(fieldValue)) {
+                // Handle arrays (e.g., Top places to visit, Main airports)
+                field.innerHTML = fieldValue.join(', ');
+            } else {
+                // Handle regular text content
+                field.textContent = fieldValue || 'Not available';
+            }
+        }
+    }
+
+    // Format nested object to display (e.g., Visa Requirements)
+    function formatNestedObject(obj) {
+        let html = '';
+        for (const [key, value] of Object.entries(obj)) {
+            if (typeof value === 'object') {
+                html += `<strong>${key}:</strong><ul>`;
+                value.forEach(item => {
+                    html += `<li>${item}</li>`;
+                });
+                html += '</ul>';
+            } else {
+                html += `<strong>${key}:</strong> ${value}<br>`;
+            }
+        }
+        return html;
+    }
+});
