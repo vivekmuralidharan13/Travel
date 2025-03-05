@@ -1,65 +1,49 @@
-// Function to load and display country list
-function loadCountryList() {
-    fetch('data/countries.json')
-        .then(response => response.json())
-        .then(countries => {
-            const countryListContainer = document.getElementById('country-list');
-            countryListContainer.innerHTML = ''; // Clear any existing country list
-
-            countries.forEach(country => {
-                const countryItem = document.createElement('li');
-                const countryLink = document.createElement('a');
-                countryLink.href = '#';
-                countryLink.textContent = country.name;
-                countryLink.onclick = () => loadCountry(country.file); // Pass the file name
-
-                countryItem.appendChild(countryLink);
-                countryListContainer.appendChild(countryItem);
-            });
-        })
-        .catch(error => {
-            console.error('Error loading country list:', error);
+// Function to load country list from countries.json and populate the dropdown
+document.addEventListener("DOMContentLoaded", function() {
+    fetch('countries.json')  // Path to your countries.json file
+    .then(response => response.json())
+    .then(data => {
+        const dropdown = document.getElementById('country-dropdown');
+        
+        // Loop through countries in the JSON file and create <option> elements
+        Object.keys(data).forEach(country => {
+            const option = document.createElement('option');
+            option.value = country;
+            option.textContent = country;
+            dropdown.appendChild(option);
         });
-}
 
-// Function to load country information
-function loadCountry(countryFile) {
-    fetch(`data/${countryFile}`)
-        .then(response => response.json())
-        .then(countryInfo => {
-            const countryInfoContainer = document.getElementById('country-info');
-            countryInfoContainer.innerHTML = ''; // Clear existing content
-
-            // Add country title
-            const title = document.createElement('h2');
-            title.textContent = countryInfo.Countries;
-            countryInfoContainer.appendChild(title);
-
-            // Add country info sections dynamically
-            for (let key in countryInfo) {
-                if (key !== 'Countries') {
-                    const section = document.createElement('section');
-                    const sectionTitle = document.createElement('h3');
-                    sectionTitle.textContent = key.toUpperCase();
-                    section.appendChild(sectionTitle);
-
-                    const line = document.createElement('hr');
-                    section.appendChild(line);
-
-                    const sectionContent = document.createElement('p');
-                    sectionContent.textContent = JSON.stringify(countryInfo[key], null, 2); // Pretty print JSON content
-                    section.appendChild(sectionContent);
-
-                    countryInfoContainer.appendChild(section);
-                }
+        // Event listener to load country info when a country is selected
+        dropdown.addEventListener('change', function() {
+            const selectedCountry = dropdown.value;
+            if (selectedCountry) {
+                loadCountryInfo(selectedCountry, data);
+            } else {
+                document.getElementById('country-info').innerHTML = '<h2>Select a country to view details.</h2>';
             }
-        })
-        .catch(error => {
-            console.error('Error loading country info:', error);
         });
-}
-
-// Call the function to load the country list on page load
-document.addEventListener('DOMContentLoaded', () => {
-    loadCountryList();
+    })
+    .catch(error => {
+        console.error('Error loading countries.json:', error);
+    });
 });
+
+// Function to load and display the country information dynamically
+function loadCountryInfo(country, data) {
+    const countryInfo = data[country];
+    let countryInfoHtml = `<h2>${country}</h2>`;
+
+    // Loop through the available fields in the country's data
+    Object.keys(countryInfo).forEach(key => {
+        countryInfoHtml += `
+            <div class="info-section">
+                <h3>${key}</h3>
+                <hr>
+                <p>${countryInfo[key]}</p>
+            </div>
+        `;
+    });
+
+    // Update the country info section in the main content area
+    document.getElementById('country-info').innerHTML = countryInfoHtml;
+}
