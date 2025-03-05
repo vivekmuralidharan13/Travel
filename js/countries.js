@@ -1,9 +1,12 @@
 document.addEventListener("DOMContentLoaded", function() {
-    // Fetch countries list from countries.json
+    // Fetch countries list from countries.json only once
     fetch('data/countries.json')
     .then(response => response.json())
     .then(countries => {
         const countryDropdown = document.getElementById('country-dropdown');
+        
+        // Clear any existing options to avoid duplication
+        countryDropdown.innerHTML = ''; // Reset dropdown content
         
         // Populate country dropdown
         countries.forEach(country => {
