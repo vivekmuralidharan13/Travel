@@ -1,6 +1,5 @@
-// Function to load country list from countries.json and populate the dropdown
 document.addEventListener("DOMContentLoaded", function() {
-    fetch('countries.json')  // Path to your countries.json file
+    fetch('data/countries.json')  // Corrected path
     .then(response => response.json())
     .then(data => {
         const dropdown = document.getElementById('country-dropdown');
@@ -8,7 +7,7 @@ document.addEventListener("DOMContentLoaded", function() {
         // Loop through countries in the JSON file and create <option> elements
         data.forEach(country => {
             const option = document.createElement('option');
-            option.value = country.filename;  // Use the filename (e.g., 'Australia.json')
+            option.value = country.filename;  // Use the filename (e.g., 'USA.json')
             option.textContent = country.name;  // Use the country name
             dropdown.appendChild(option);
         });
@@ -17,9 +16,9 @@ document.addEventListener("DOMContentLoaded", function() {
         dropdown.addEventListener('change', function() {
             const selectedCountryFile = dropdown.value;
             if (selectedCountryFile) {
-                loadCountryInfo(selectedCountryFile);
+                loadCountryData(selectedCountryFile);  // Adjusted to call the correct function
             } else {
-                document.getElementById('country-info').innerHTML = '<h2>Select a country to view details.</h2>';
+                resetCountryInfo();  // Reset if no country is selected
             }
         });
     })
@@ -29,29 +28,52 @@ document.addEventListener("DOMContentLoaded", function() {
 });
 
 // Function to load and display the country information dynamically
-function loadCountryInfo(countryFile) {
-    fetch(countryFile)  // Fetch the corresponding country's JSON file
+function loadCountryData(countryFile) {
+    fetch(`data/${countryFile}`)  // Ensure data files are under the 'data' folder
     .then(response => response.json())
     .then(countryData => {
-        let countryInfoHtml = `<h2>${countryData.name}</h2>`;  // Assume 'name' is present in each country's JSON
+        document.getElementById("country-title").textContent = countryData.Countries;  // Update title
 
-        // Loop through the country data and display it
-        Object.keys(countryData).forEach(key => {
-            if (key !== 'name') {  // Exclude the 'name' key from being displayed
-                countryInfoHtml += `
-                    <div class="info-section">
-                        <h3>${key}</h3>
-                        <hr>
-                        <p>${countryData[key]}</p>
-                    </div>
-                `;
-            }
-        });
-
-        // Update the country info section in the main content area
-        document.getElementById('country-info').innerHTML = countryInfoHtml;
+        // Dynamically update the country info fields
+        updateCountryInfo(countryData);
     })
     .catch(error => {
         console.error('Error loading country data:', error);
+    });
+}
+
+// Function to update the country info sections dynamically
+function updateCountryInfo(data) {
+    function updateField(id, fieldData) {
+        let fieldElement = document.getElementById(id);
+        if (fieldElement) {
+            fieldElement.textContent = fieldData || "Information not available.";
+        }
+    }
+
+    updateField("visa-requirements", JSON.stringify(data["Visa Requirements"], null, 2));  // Nested data can be formatted
+    updateField("socket-type", data["Socket Type"]);
+    updateField("card-cash", data["Card/Cash"]);
+    updateField("public-transport", data["Public Transport"]);
+    updateField("uber-taxi", data["Uber/Wolt/Yandex Taxi"]);
+    updateField("national-carrier", data["National Carrier"]);
+    updateField("main-airports", data["Main Airports"].join(", "));
+    updateField("budget-per-day", data["Budget per day"]);
+    updateField("weather", data["Weather"]);
+    updateField("best-time-to-visit", data["Best Time to Visit"]);
+    updateField("emergency-number", data["Emergency Number"]);
+    updateField("top-places-to-visit", data["Top places to Visit"].join(", "));
+    updateField("currency-exchange-rate", data["Currency & Exchange rate"]);
+}
+
+// Reset function if no country is selected
+function resetCountryInfo() {
+    const sections = [
+        "visa-requirements", "socket-type", "card-cash", "public-transport", "uber-taxi",
+        "national-carrier", "main-airports", "budget-per-day", "weather", "best-time-to-visit",
+        "emergency-number", "top-places-to-visit", "currency-exchange-rate"
+    ];
+    sections.forEach(sectionId => {
+        document.getElementById(sectionId).textContent = "Select a country to view details.";
     });
 }
