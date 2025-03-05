@@ -1,53 +1,3 @@
-// Function to load and display country data based on selection
-function loadCountry(countryFile) {
-    fetch(`data/${countryFile}`)
-        .then(response => response.json())
-        .then(data => {
-            // Populate the country info dynamically
-            const detailsContainer = document.getElementById('country-details');
-            detailsContainer.innerHTML = ''; // Clear previous details
-
-            // Set the country title
-            const countryTitle = document.createElement('h2');
-            countryTitle.textContent = data.Country;
-            detailsContainer.appendChild(countryTitle);
-
-            // Loop through the first-level keys in the JSON file and create corresponding sections
-            for (const key in data) {
-                if (data.hasOwnProperty(key) && key !== 'Country') {
-                    const section = document.createElement('section');
-                    section.classList.add('country-info-section');
-
-                    const heading = document.createElement('h3');
-                    heading.textContent = key.toUpperCase();
-                    section.appendChild(heading);
-
-                    const line = document.createElement('hr');
-                    section.appendChild(line);
-
-                    // Handle different data types (string, array, or nested object)
-                    const content = document.createElement('p');
-                    if (typeof data[key] === 'object') {
-                        if (Array.isArray(data[key])) {
-                            content.textContent = data[key].join(', ');
-                        } else {
-                            // If it's a nested object, display in a readable format
-                            content.textContent = JSON.stringify(data[key], null, 2);
-                        }
-                    } else {
-                        content.textContent = data[key];
-                    }
-                    section.appendChild(content);
-
-                    detailsContainer.appendChild(section);
-                }
-            }
-        })
-        .catch(error => {
-            console.error('Error loading country data:', error);
-        });
-}
-
 // Function to load and display country list
 function loadCountryList() {
     fetch('data/countries.json')
@@ -69,6 +19,43 @@ function loadCountryList() {
         })
         .catch(error => {
             console.error('Error loading country list:', error);
+        });
+}
+
+// Function to load country information
+function loadCountry(countryFile) {
+    fetch(`data/${countryFile}`)
+        .then(response => response.json())
+        .then(countryInfo => {
+            const countryInfoContainer = document.getElementById('country-info');
+            countryInfoContainer.innerHTML = ''; // Clear existing content
+
+            // Add country title
+            const title = document.createElement('h2');
+            title.textContent = countryInfo.Countries;
+            countryInfoContainer.appendChild(title);
+
+            // Add country info sections dynamically
+            for (let key in countryInfo) {
+                if (key !== 'Countries') {
+                    const section = document.createElement('section');
+                    const sectionTitle = document.createElement('h3');
+                    sectionTitle.textContent = key.toUpperCase();
+                    section.appendChild(sectionTitle);
+
+                    const line = document.createElement('hr');
+                    section.appendChild(line);
+
+                    const sectionContent = document.createElement('p');
+                    sectionContent.textContent = JSON.stringify(countryInfo[key], null, 2); // Pretty print JSON content
+                    section.appendChild(sectionContent);
+
+                    countryInfoContainer.appendChild(section);
+                }
+            }
+        })
+        .catch(error => {
+            console.error('Error loading country info:', error);
         });
 }
 
