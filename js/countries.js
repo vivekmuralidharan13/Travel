@@ -1,59 +1,45 @@
-window.onload = function () {
-    fetchCountries();
-};
-
-// Fetch countries from the JSON file and populate the dropdown
-function fetchCountries() {
-    fetch("data/countries.json")
-        .then(response => response.json())
-        .then(data => {
-            let countryDropdown = document.getElementById("country-dropdown");
-
-            // Clear the dropdown and add a default option
-            countryDropdown.innerHTML = "<option value=''>Select a Country</option>";
-
-            // Add country options to the dropdown
-            data.forEach(country => {
-                let option = document.createElement("option");
-                option.value = country.filename;
-                option.textContent = country.name;
-                countryDropdown.appendChild(option);
-            });
-        })
-        .catch(err => console.error("Error loading countries:", err));
-}
-
-// Load the country data dynamically based on the selected country
-function loadCountryDataFromDropdown() {
-    let dropdown = document.getElementById("country-dropdown");
-    let selectedCountry = dropdown.value;
-
-    if (selectedCountry) {
-        loadCountryData(selectedCountry);
-    }
-}
-
-// Load the country data dynamically based on the selected country
 function loadCountryData(filename) {
     fetch(`data/${filename}`)
         .then(response => response.json())
         .then(data => {
             document.getElementById("country-title").textContent = data.Countries; // Update title
+            
+            // Function to process nested objects if they exist
+            function processNestedData(fieldId, fieldData) {
+                let fieldElement = document.getElementById(fieldId);
+                if (!fieldElement) return;
+                
+                if (typeof fieldData === "object") {
+                    // Handle nested objects by formatting their contents
+                    let formattedText = "";
+                    for (let key in fieldData) {
+                        if (typeof fieldData[key] === "object") {
+                            formattedText += `${key}: ${JSON.stringify(fieldData[key], null, 2)}\n`;
+                        } else {
+                            formattedText += `${key}: ${fieldData[key]}\n`;
+                        }
+                    }
+                    fieldElement.textContent = formattedText;
+                } else {
+                    // If it's a string or simple value, assign directly
+                    fieldElement.textContent = fieldData;
+                }
+            }
 
-            // Update each field dynamically
-            document.getElementById("visa-requirements").textContent = `Visa Requirements: ${data["Visa Requirements"]}`;
-            document.getElementById("socket-type").textContent = `Socket Type: ${data["Socket Type"]}`;
-            document.getElementById("card-cash").textContent = `Card/Cash: ${data["Card/Cash"]}`;
-            document.getElementById("public-transport").textContent = `Public Transport: ${data["Public Transport"]}`;
-            document.getElementById("uber-taxi").textContent = `Uber/Wolt/Yandex Taxi: ${data["Uber/Wolt/Yandex Taxi"]}`;
-            document.getElementById("national-carrier").textContent = `National Carrier: ${data["National Carrier"]}`;
-            document.getElementById("main-airports").textContent = `Main Airports: ${data["Main Airports"]}`;
-            document.getElementById("budget-per-day").textContent = `Budget per day: ${data["Budget per day"]}`;
-            document.getElementById("weather").textContent = `Weather: ${data["Weather"]}`;
-            document.getElementById("best-time-to-visit").textContent = `Best Time to Visit: ${data["Best Time to Visit"]}`;
-            document.getElementById("emergency-number").textContent = `Emergency Number: ${data["Emergency Number"]}`;
-            document.getElementById("top-places-to-visit").textContent = `Top places to Visit: ${data["Top places to Visit"]}`;
-            document.getElementById("currency-exchange-rate").textContent = `Currency & Exchange rate: ${data["Currency & Exchange rate"]}`;
+            // Updating each field dynamically
+            processNestedData("visa-requirements", data["Visa Requirements"]);
+            processNestedData("socket-type", data["Socket Type"]);
+            processNestedData("card-cash", data["Card/Cash"]);
+            processNestedData("public-transport", data["Public Transport"]);
+            processNestedData("uber-taxi", data["Uber/Wolt/Yandex Taxi"]);
+            processNestedData("national-carrier", data["National Carrier"]);
+            processNestedData("main-airports", data["Main Airports"].join(", "));
+            processNestedData("budget-per-day", data["Budget per day"]);
+            processNestedData("weather", data["Weather"]);
+            processNestedData("best-time-to-visit", data["Best Time to Visit"]);
+            processNestedData("emergency-number", data["Emergency Number"]);
+            processNestedData("top-places-to-visit", data["Top places to Visit"].join(", "));
+            processNestedData("currency-exchange-rate", data["Currency & Exchange rate"]);
         })
         .catch(err => console.error("Error loading country data:", err));
 }
