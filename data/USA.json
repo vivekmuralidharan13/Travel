@@ -1,25 +1,81 @@
 {
     "Countries": "USA",
-    "Visa Requirements": {
-        "Visa Waiver Program (VWP)": {
-            "Description": "The VWP allows citizens of participating countries to travel to the U.S. for tourism or business purposes for stays of up to 90 days without obtaining a visa. However, travelers must obtain an approved Electronic System for Travel Authorization (ESTA) prior to their trip.",
-            "Participating Countries (2025)": [
-                "Andorra", "Australia", "Austria", "Belgium", "Brunei", "Chile", "Croatia", "Czech Republic", "Denmark", "Estonia", "Finland", "France", "Germany", "Greece", "Hungary", "Iceland", "Ireland", "Italy", "Japan", "Latvia", "Liechtenstein", "Lithuania", "Luxembourg", "Malta", "Monaco", "Netherlands", "New Zealand", "Norway", "Poland", "Portugal", "San Marino", "Singapore", "Slovakia", "Slovenia", "South Korea", "Spain", "Sweden", "Switzerland", "Taiwan", "United Kingdom (excluding British Overseas Territories)"
-            ],
-            "Notes": "Some countries have specific conditions or recent changes regarding their participation in the VWP. As of 2025, Romania is expected to join the VWP by March 31, 2025. Additionally, certain restrictions apply to Hungarian nationals born outside Hungary, affecting their ESTA validity."
-        },
-        "Citizens of Canada and Bermuda": {
-            "Description": "Generally, citizens of Canada and Bermuda do not require a visa for tourism or business visits to the U.S. for stays of 180 days or less. However, specific categories of travelers, such as those entering for study, temporary employment, or other specialized purposes, may still require a visa."
-        },
-        "All Other Countries": {
-            "Description": "Travelers from countries not participating in the VWP or without specific exemptions must obtain a B-1 (business) or B-2 (tourism) visa prior to entering the United States. It's essential to check the specific requirements and processing times at the U.S. embassy or consulate in your country."
-        },
-        "Important Considerations": {
-            "ESTA Authorization": "Even if you're from a VWP country, you must obtain an ESTA approval before traveling. The ESTA is valid for two years or until your passport expires, whichever comes first.",
-            "Passport Validity": "Ensure your passport is valid for at least six months beyond your intended stay in the U.S., unless exempted by specific agreements.",
-            "Purpose and Duration of Stay": "The VWP and visa exemptions typically cover stays for tourism, business, or transit. For other purposes, such as employment, study, or journalism, appropriate visas are required."
-        }
-    },
+    "Visa Requirements": "1. <strong>Visa Waiver Program (VWP)</strong>:<br>The VWP allows citizens of participating countries to travel to the U.S. for tourism or business purposes for stays of up to 90 days without obtaining a visa. However, travelers must obtain an approved Electronic System for Travel Authorization (ESTA) prior to their trip. <a href='https://travel.state.gov'>TRAVEL.STATE.GOV</a><br><br><strong>Participating VWP Countries:</strong><br>As of 2025, the following countries are part of the VWP:<br>
+    <table>
+        <tr>
+            <td>Andorra</td>
+            <td>Australia</td>
+            <td>Austria</td>
+        </tr>
+        <tr>
+            <td>Belgium</td>
+            <td>Brunei</td>
+            <td>Chile</td>
+        </tr>
+        <tr>
+            <td>Croatia</td>
+            <td>Czech Republic</td>
+            <td>Denmark</td>
+        </tr>
+        <tr>
+            <td>Estonia</td>
+            <td>Finland</td>
+            <td>France</td>
+        </tr>
+        <tr>
+            <td>Germany</td>
+            <td>Greece</td>
+            <td>Hungary</td>
+        </tr>
+        <tr>
+            <td>Iceland</td>
+            <td>Ireland</td>
+            <td>Italy</td>
+        </tr>
+        <tr>
+            <td>Japan</td>
+            <td>Latvia</td>
+            <td>Liechtenstein</td>
+        </tr>
+        <tr>
+            <td>Lithuania</td>
+            <td>Luxembourg</td>
+            <td>Malta</td>
+        </tr>
+        <tr>
+            <td>Monaco</td>
+            <td>Netherlands</td>
+            <td>New Zealand</td>
+        </tr>
+        <tr>
+            <td>Norway</td>
+            <td>Poland</td>
+            <td>Portugal</td>
+        </tr>
+        <tr>
+            <td>San Marino</td>
+            <td>Singapore</td>
+            <td>Slovakia</td>
+        </tr>
+        <tr>
+            <td>Slovenia</td>
+            <td>South Korea</td>
+            <td>Spain</td>
+        </tr>
+        <tr>
+            <td>Sweden</td>
+            <td>Switzerland</td>
+            <td>Taiwan</td>
+        </tr>
+        <tr>
+            <td>United Kingdom (excluding British Overseas Territories)</td>
+        </tr>
+    </table><br><br><strong>Note:</strong> Some countries have specific conditions or recent changes regarding their participation in the VWP. For instance, as of 2025, Romania is expected to join the VWP by March 31, 2025. Additionally, certain restrictions apply to Hungarian nationals born outside Hungary, affecting their ESTA validity. <a href='https://en.wikipedia.org'>EN.WIKIPEDIA.ORG</a><br><br>2. <strong>Citizens of Canada and Bermuda:</strong><br>Generally, citizens of Canada and Bermuda do not require a visa for tourism or business visits to the U.S. for stays of 180 days or less. However, specific categories of travelers, such as those entering for study, temporary employment, or other specialized purposes, may still require a visa. <a href='https://travel.state.gov'>TRAVEL.STATE.GOV</a><br><br>3. <strong>All Other Countries:</strong><br>Travelers from countries not participating in the VWP or without specific exemptions must obtain a B-1 (business) or B-2 (tourism) visa prior to entering the United States. It's essential to check the specific requirements and processing times at the U.S. embassy or consulate in your country. <a href='https://travel.state.gov'>TRAVEL.STATE.GOV</a><br><br><strong>Important Considerations:</strong><br>
+    <ul>
+        <li><strong>ESTA Authorization:</strong> Even if you're from a VWP country, you must obtain an ESTA approval before traveling. The ESTA is valid for two years or until your passport expires, whichever comes first. <a href='https://travel.state.gov'>TRAVEL.STATE.GOV</a></li>
+        <li><strong>Passport Validity:</strong> Ensure your passport is valid for at least six months beyond your intended stay in the U.S., unless exempted by specific agreements.</li>
+        <li><strong>Purpose and Duration of Stay:</strong> The VWP and visa exemptions typically cover stays for tourism, business, or transit. For other purposes, such as employment, study, or journalism, appropriate visas are required.</li>
+    </ul><br>",
     "Socket Type": "A, B",
     "Card/Cash": "Cards widely accepted, cashless transactions common",
     "Public Transport": "Subways, buses, and trains in major cities",
